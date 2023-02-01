@@ -7,9 +7,14 @@ This project creates a JSON REST API for storing and querying sensor metadata. E
           * Storing name, location, and tags for each sensor
           * Retrieving metadata for each sensor by name
           * Updating a sensor's metadata
-          * Querying to find the sensor nearest to a given location
+          * Querying to find the sensor nearest to a given location (coordinate)
+          * Querying to find the sensor nearest to a given location (city/state/town)
           
 [This project was created in Go and made use of the Gin Web Framework.](https://github.com/gin-gonic/gin)
+
+For one of the GET endpoints, forward geocoding from the Mapbox API is used.
+
+[See Mapbox here.](https://www.mapbox.com/)
 
 ## Install, Build, and Run Locally
 
@@ -44,6 +49,5 @@ To GET a sensor by closest location:
 To DELETE a sensor by name:
 `curl -X DELETE http://localhost:8080/sensors/NAME`
 
-## Further Development
-
-The API is in working condition with all implemented endpoints functioning properly. The next steps are to include additional tests and input validation. In addition, some of the code can be rewritten for efficiency. Specifically, more complex data structures can be implemented to decrease the time complexity of some functions. Finally, the API can be connected to a frontend and database for complete functional use.
+To GET a sensor closest to a city/state/town:
+`curl http://localhost:8080/sensors/location/LOCATION`
